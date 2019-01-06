@@ -2,20 +2,14 @@
 
 # Flask などの必要なライブラリをインポートする
 from flask import Flask, render_template, request, redirect, url_for
-import numpy as np
 
 # 自身の名称を app という名前でインスタンス化する
 app = Flask(__name__)
 
 # メッセージをランダムに表示するメソッド
 def picked_up():
-    messages = [
-        "こんにちは、あなたの名前を入力してください",
-        "やあ！お名前は何ですか？",
-        "あなたの名前を教えてね"
-    ]
-    # NumPy の random.choice で配列からランダムに取り出し
-    return np.random.choice(messages)
+    messages = ["こんにちは、あなたの名前を入力してください"]
+    return messages
 
 # ここからウェブアプリケーション用のルーティングを記述
 # index にアクセスしたときの処理
