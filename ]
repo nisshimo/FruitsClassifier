@@ -1,0 +1,27 @@
+from flickrapi import FlickrAPI
+from urllib.request import urlretrieve
+from pprint import pprint
+import os, time, sys
+
+# APIキーの情報
+
+key = "b3a30c7b678f6386627cfffdfd0ba77f"
+secret = "a0ec13bd768e47d0"
+wait_time = 1
+
+# 保存フォルダの設定
+fruitname = sys.argv[1]
+savedir = "./" + fruitname
+
+flickr = FlickerAPI(key, secret, format='parsed-json')
+result = flickr.photos.search(
+    text=fruitname,
+    per_page=400,
+    media='photos',
+    sort='relevance',
+    safe_search=1,
+    extras='url_q, licance'
+)
+
+photos = result['photos']
+pprint(photos)
