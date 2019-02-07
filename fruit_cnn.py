@@ -50,7 +50,7 @@ def model_train(X, y):
     model.compile(loss='categorical_crossentropy',
             optimizer=opt, metrics=['accuracy'])
 
-    model.fit(X, y, batch_size=32, nb_epoch=200)
+    model.fit(X, y, batch_size=32, epochs=200)
 
     # モデルの保存
     model.save("./fruit_cnn.hs")
@@ -66,4 +66,3 @@ def model_eval(model, X, y):
 
 if __name__ == "__main__":
     main()
-
