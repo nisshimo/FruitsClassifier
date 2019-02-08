@@ -1,35 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% if title %}
-      <title>{{ title }}</title>
-    {% else %}
-      <title>Bootstrap 101 Template</title>
-    {% endif %}
-  </head>
-  <body>
-    <div class="form">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <p class="lead">
-              {% if name %}
-                こんにちは {{ name }} さん
-              {% else %}
-                {{ message }}
-              {% endif %}
-            </p>
-            <form action="/post" method="post" class="form-inline">
-              <label for="name">名前</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-              <button type="submit" class="btn btn-default">送信する</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
+<!doctype html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <title>ファイルをアップロードして判定しよう</title>
+    </head>
+    <body>
+        <h1>果物の画像認識アプリ</h1>
+        <form method = post enctype = multipart/form-data>
+        <p><input type=file name=file>
+        <input type=submit value=Upload>
+        </form>
+    </body>
 </html>
+

@@ -2,7 +2,8 @@ from keras.models import Sequential, load_model
 from keras.layers import Conv2D, MaxPooling2D
 from keras.layers import Activation, Dropout, Flatten, Dense
 # from keras.utils import np_utils
-import keras,sys
+import keras
+import sys
 import numpy as np
 from PIL import Image
 

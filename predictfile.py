@@ -4,7 +4,8 @@ from werkzeug.utils import secure_filename
 from flask import send_from_directory
 
 from keras.models import Sequential, load_model
-import keras,sys
+import keras
+import sys
 import numpy as np
 from PIL import Image
 
@@ -38,7 +39,7 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-
+   
             model = load_model('./fruit_cnn.hs')
 
             image = Image.open(filepath)
@@ -52,8 +53,9 @@ def upload_file():
             result = model.predict([X])[0]
             predicted = result.argmax()
             percentage = int(result[predicted] * 100)
-
-            return "ラベル： " + classes[predicted] + ", 確率：" + str(percentage) + " %"
+   
+            return "ラベル： " + classes[predicted] \
+                    + ", 確率：" + str(percentage) + " %"
             # return redirect(url_for('uploaded_file', filename=filename))
     return '''
     <!doctype html>
@@ -62,7 +64,7 @@ def upload_file():
     <meta charset="UTF-8">
     <title>ファイルをアップロードして判定しよう</title></head>
     <body>
-    <h1>ファイルをアップロードして判定しよう！</h1>
+    <h1>果物の画像をアップロードしよう！</h1>
     <form method = post enctype = multipart/form-data>
     <p><input type=file name=file>
     <input type=submit value=Upload>
@@ -70,8 +72,7 @@ def upload_file():
     </body>
     </html>
     '''
-
-
+    
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
